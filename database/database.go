@@ -2,7 +2,6 @@ package database
 
 import (
 	"fmt"
-	"runtime"
 	"strings"
 
 	"github.com/negbie/logp"
@@ -52,10 +51,6 @@ func (d *Database) Run() error {
 	err := d.H.setup()
 	if err != nil {
 		return err
-	}
-
-	if worker > runtime.NumCPU() {
-		worker = runtime.NumCPU()
 	}
 
 	for i := 0; i < worker; i++ {
